@@ -58,4 +58,21 @@ def registrar_solicitud():
     print(f"Prioridad: {prioridad}")  # Agregamos la prioridad al resultado final
     print(f"Descripción: {descripcion}")
 
-registrar_solicitud()
+def menu_principal():
+    while True:
+        print("\n=== SOPORTE ACADÉMICO ===")
+        print("1. Registrar solicitud")
+        print("2. Salir")
+        
+        opcion = input("Elige una opción (1 o 2): ")
+        
+        if opcion == "1":
+            registrar_solicitud()
+        elif opcion == "2":
+            print("Saliendo del sistema... ¡Hasta luego!")
+            break  # Esto rompe el bucle y termina el programa
+        else:
+            print("Opción no válida. Por favor, ingresa 1 o 2.")
+
+# En lugar de llamar de frente a registrar_solicitud(), llamamos al menú
+menu_principal()
