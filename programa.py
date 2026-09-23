@@ -9,9 +9,17 @@ TIPOS_CONSULTA = [
 def validar_codigo(codigo):
     return bool(codigo.strip()) and len(codigo.strip()) >= 8
 
-
 def validar_texto(texto):
     return bool(texto.strip())
+
+def mostrar_resumen(codigo, nombre, tipo, descripcion, prioridad):
+    print("\n----- RESUMEN DE SOLICITUD -----")
+    print(f"Código: {codigo}")
+    print(f"Nombre: {nombre}")
+    print(f"Tipo de consulta: {tipo}")
+    print(f"Descripción: {descripcion}")
+    print(f"Prioridad: {prioridad}")
+    print("--------------------------------")
 
 def validar_tipo(tipo):
     tipo_limpio = tipo.strip().lower()
@@ -42,7 +50,6 @@ def registrar_solicitud():
     
     nombre = input("Nombre del estudiante: ")
     
-    
     if validar_texto(nombre):
         print("Nombre válido.")
     else:
@@ -61,7 +68,6 @@ def registrar_solicitud():
         
     descripcion = input("Descripción: ")
     
-    
     if validar_texto(descripcion):
         print("Descripción válida.")
     else:
@@ -69,11 +75,7 @@ def registrar_solicitud():
         return
 
     print("\nSolicitud registrada.")
-    print(f"Código: {codigo}")
-    print(f"Nombre: {nombre}")
-    print(f"Tipo: {tipo}")
-    print(f"Prioridad: {prioridad}") 
-    print(f"Descripción: {descripcion}")
+    mostrar_resumen(codigo, nombre, tipo, descripcion, prioridad)
 
 
 def menu_principal():
