@@ -1,11 +1,3 @@
-TIPOS_CONSULTA = [
-    "matrícula",
-    "pagos",
-    "constancia",
-    "plataforma",
-    "otro"
-]
-
 def validar_codigo(codigo):
     return bool(codigo.strip()) and len(codigo.strip()) >= 8
 
@@ -21,10 +13,10 @@ def mostrar_resumen(codigo, nombre, tipo, descripcion, prioridad):
     print(f"Prioridad: {prioridad}")
     print("--------------------------------")
 
-def validar_tipo(tipo):
+def validar_tipo(tipo, lista_permitida):
     tipo_limpio = tipo.strip().lower()
     
-    if tipo_limpio in TIPOS_CONSULTA:
+    if tipo_limpio in lista_permitida:
         return True
     else:
         return False
@@ -40,6 +32,14 @@ def calcular_prioridad(tipo):
         return "Baja"
 
 def registrar_solicitud():
+    tipos_consulta = [
+        "matrícula",
+        "pagos",
+        "constancia",
+        "plataforma",
+        "otro"
+    ]
+    
     codigo = input("Código del estudiante: ")
     
     if validar_codigo(codigo):
@@ -59,7 +59,8 @@ def registrar_solicitud():
     print("Opciones de consulta: matrícula, pagos, constancia, plataforma, otro")
     tipo = input("Tipo de consulta: ")
     
-    if validar_tipo(tipo):
+    
+    if validar_tipo(tipo, tipos_consulta):
         print("Tipo de consulta válido.")
         prioridad = calcular_prioridad(tipo)
     else:
