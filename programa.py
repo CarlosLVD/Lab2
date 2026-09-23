@@ -59,7 +59,6 @@ def registrar_solicitud():
     print("Opciones de consulta: matrícula, pagos, constancia, plataforma, otro")
     tipo = input("Tipo de consulta: ")
     
-    
     if validar_tipo(tipo, tipos_consulta):
         print("Tipo de consulta válido.")
         prioridad = calcular_prioridad(tipo)
@@ -95,4 +94,6 @@ def menu_principal():
         else:
             print("Opción no válida. Por favor, ingresa 1 o 2.")
 
-menu_principal()
+
+if __name__ == "__main__":
+    menu_principal()
