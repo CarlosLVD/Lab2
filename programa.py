@@ -9,6 +9,10 @@ TIPOS_CONSULTA = [
 def validar_codigo(codigo):
     return bool(codigo.strip()) and len(codigo.strip()) >= 8
 
+
+def validar_texto(texto):
+    return bool(texto.strip())
+
 def validar_tipo(tipo):
     tipo_limpio = tipo.strip().lower()
     
@@ -33,30 +37,44 @@ def registrar_solicitud():
     if validar_codigo(codigo):
         print("Código válido.")
     else:
-        print("Código inválido. Debe tener al menos 8 caracteres.")
+        print("Error: el código debe tener al menos 8 caracteres.")
         return 
     
     nombre = input("Nombre del estudiante: ")
+    
+    
+    if validar_texto(nombre):
+        print("Nombre válido.")
+    else:
+        print("Error: el nombre no puede estar vacío.")
+        return
     
     print("Opciones de consulta: matrícula, pagos, constancia, plataforma, otro")
     tipo = input("Tipo de consulta: ")
     
     if validar_tipo(tipo):
-        print("Tipo válido.")
-        # Calculamos la prioridad solo si el tipo es válido
+        print("Tipo de consulta válido.")
         prioridad = calcular_prioridad(tipo)
     else:
-        print("Tipo de consulta inválido. Debes elegir una opción de la lista.")
+        print("Error: tipo de consulta no válido.")
         return
         
     descripcion = input("Descripción: ")
+    
+    
+    if validar_texto(descripcion):
+        print("Descripción válida.")
+    else:
+        print("Error: la descripción no puede estar vacía.")
+        return
 
     print("\nSolicitud registrada.")
     print(f"Código: {codigo}")
     print(f"Nombre: {nombre}")
     print(f"Tipo: {tipo}")
-    print(f"Prioridad: {prioridad}")  # Agregamos la prioridad al resultado final
+    print(f"Prioridad: {prioridad}") 
     print(f"Descripción: {descripcion}")
+
 
 def menu_principal():
     while True:
@@ -70,9 +88,8 @@ def menu_principal():
             registrar_solicitud()
         elif opcion == "2":
             print("Saliendo del sistema... ¡Hasta luego!")
-            break  # Esto rompe el bucle y termina el programa
+            break  
         else:
             print("Opción no válida. Por favor, ingresa 1 o 2.")
 
-# En lugar de llamar de frente a registrar_solicitud(), llamamos al menú
 menu_principal()
